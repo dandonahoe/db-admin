@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:web": "pnpm --prefix src/web run start",
+    "reset": "rm -rf node_modules src/web/node_modules src/api/node_modules && pnpm --prefix src/web install && pnpm --prefix src/api install",
+    "dev:web": "pnpm --prefix src/web dev",
     "dev:api": "pnpm --prefix src/api run start",
-    "build:api": "IS_BUILDING=true pnpm --prefix src/api run build",
-    "build:web": "IS_BUILDING=true pnpm run build"
+    "build:api": "IS_BUILDING=true pnpm --prefix src/api build",
+    "build:web": "IS_BUILDING=true pnpm --prefix src/web build"
 
 
   },
