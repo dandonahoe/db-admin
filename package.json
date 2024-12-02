@@ -4,21 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:web": "pnpm --prefix src/web run start",
+    "dev:api": "pnpm --prefix src/api run start",
+    "build:api": "IS_BUILDING=true pnpm --prefix src/api run build",
+    "build:web": "IS_BUILDING=true pnpm run build"
+
+
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "12.1.0",
-    "typescript": "5.7.2"
+    "commander": "12.1.0"
   },
   "devDependencies": {
-    "@nx/eslint": "20.1.4",
-    "@nx/jest": "20.1.4",
-    "@nx/next": "20.1.4",
-    "eslint": "~8.57.0",
-    "nx": "20.1.4"
-  },
-  "nx": {}
+    "eslint": "~8.57.0"
+  }
 }
