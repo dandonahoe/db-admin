@@ -12,5 +12,13 @@
   "dependencies": {
     "commander": "12.1.0",
     "typescript": "5.7.2"
-  }
+  },
+  "devDependencies": {
+    "@nx/eslint": "20.1.4",
+    "@nx/jest": "20.1.4",
+    "@nx/next": "20.1.4",
+    "eslint": "~8.57.0",
+    "nx": "20.1.4"
+  },
+  "nx": {}
 }

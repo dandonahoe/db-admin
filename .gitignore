@@ -7,6 +7,8 @@
 
 artifact
 
+.pnpm-store
+
 src/api/logging/**/*
 src/api/log/**/*
 
@@ -129,3 +131,8 @@ amplifytools.xcconfig
 #amplify-do-not-edit-end
 
 *storybook.log
+
+
+
+.nx/cache
+.nx/workspace-data
