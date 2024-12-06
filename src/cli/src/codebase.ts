@@ -20,13 +20,13 @@ interface ScanConfig {
 
 const scanJobList: ScanConfig[] = [{
         outputDescription : 'Midpoint Output 123',
-        fileTypesToScan   : ['.ts', '.tsx', '.sql', '.java'],
+        fileTypesToScan   : ['.ts', '.tsx', '.sql', '.java', '.xml', '.py', '.sh', '.yml', '.yaml', '.json'],
         outputFilePath    : path.join(__dirname, './output/midpoint.md'),
         excludePaths      : [],
         outputHeader      : '## Midpoint Codebase\n\n',
         includeTests      : false,
         outputDir         : path.join(__dirname, './output'),
-        srcDir            : path.join(__dirname, '../midpoint'),
+        srcDir            : path.join(__dirname, '../../../../midpoint'),
     }
     // , {
     //     outputDescription : 'This document contains all the backend codebase for the Crude Cards game.',
