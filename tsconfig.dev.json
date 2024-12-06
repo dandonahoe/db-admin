@@ -1,0 +1,63 @@
+{
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS",
+            "strictNullChecks": true,
+            "types": [
+                "node",
+                "jest"
+            ],
+        }
+    },
+    "compilerOptions": {
+        "jsx": "preserve",
+        "strict": true,
+        "esModuleInterop": true,
+        "allowJs": true,
+        "removeComments": true,
+        "noImplicitAny": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noFallthroughCasesInSwitch": false,
+        "skipLibCheck": true,
+        "declaration": false,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": false,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true,
+        "incremental": true,
+        "module": "Preserve",
+        "target": "ES2021",
+        "sourceMap": true,
+        "moduleDetection": "force",
+        "noImplicitOverride": true,
+        "moduleResolution": "node",
+        "isolatedModules": true,
+        "types": [
+            "node",
+            "jest"
+        ],
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "resolveJsonModule": true,
+        "lib": [
+            "ES2021",
+            "dom"
+        ],
+        "baseUrl": ".",
+        "rootDirs": [
+            "./src",
+            "./src/scripts"
+        ],
+        "paths": {
+            "@app/*": [
+                "src/*",
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "tsconfig.*"
+    ],
+}

@@ -3,6 +3,7 @@ import { promises as fs } from 'fs';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 
+
 // Load environment variables from .env file
 dotenv.config();
 
@@ -25,7 +26,7 @@ const scanJobList: ScanConfig[] = [{
         outputHeader      : '## Midpoint Codebase\n\n',
         includeTests      : false,
         outputDir         : path.join(__dirname, './output'),
-        srcDir            : path.join(__dirname, '../../../../midpoint'),
+        srcDir            : path.join(__dirname, '../midpoint'),
     }
     // , {
     //     outputDescription : 'This document contains all the backend codebase for the Crude Cards game.',

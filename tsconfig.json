@@ -1,10 +1,11 @@
 {
-    "compilerOptions": {
-        "module": "ESNext",
-        "moduleResolution": "node",
-        "target": "ESNext",
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "strict": true
-    }
+    "extends": "./tsconfig.dev.json",
+    "exclude": [
+        "node_modules",
+        "tsconfig.*"
+    ],
+    "include": [
+        "**/*.ts",
+        "**/*.tsx"
+    ]
 }
