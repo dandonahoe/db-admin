@@ -1,19 +1,73 @@
 {
-  "name": "cli",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "job:codebase": "ts-node ./src/codebase.ts",
-    "vt": "ts-node ./src/index.ts"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.4.7",
-    "minimatch": "^10.0.1",
-    "ts-node": "^10.9.2"
-  }
+    "name": "vtcli",
+    "description": "A new CLI generated with oclif",
+    "version": "0.0.0",
+    "author": "Dan Donahoe",
+    "bin": {
+        "vtcli": "./bin/run.js"
+    },
+    "bugs": "https://github.com/cli/vtcli/issues",
+    "dependencies": {
+        "@oclif/core": "^4",
+        "@oclif/plugin-help": "^6",
+        "@oclif/plugin-plugins": "^5"
+    },
+    "devDependencies": {
+        "@oclif/prettier-config": "^0.2.1",
+        "@oclif/test": "^4",
+        "@types/chai": "^4",
+        "@types/mocha": "^10",
+        "@types/node": "^18",
+        "chai": "^4",
+        "eslint": "^8",
+        "eslint-config-oclif": "^5",
+        "eslint-config-oclif-typescript": "^3",
+        "eslint-config-prettier": "^9",
+        "mocha": "^10",
+        "oclif": "^4",
+        "shx": "^0.3.3",
+        "ts-node": "^10",
+        "typescript": "^5"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "files": [
+        "/bin",
+        "/dist",
+        "/oclif.manifest.json"
+    ],
+    "homepage": "https://github.com/cli/vtcli",
+    "keywords": [
+        "oclif"
+    ],
+    "license": "MIT",
+    "main": "dist/index.js",
+    "type": "module",
+    "oclif": {
+        "bin": "vtcli",
+        "dirname": "vtcli",
+        "commands": "./dist/commands",
+        "plugins": [
+            "@oclif/plugin-help",
+            "@oclif/plugin-plugins"
+        ],
+        "topicSeparator": " ",
+        "topics": {
+            "hello": {
+                "description": "Say hello to the world and others"
+            }
+        }
+    },
+    "repository": "cli/vtcli",
+    "scripts": {
+        "build": "shx rm -rf dist && tsc -b",
+        "lint": "eslint . --ext .ts",
+        "postpack": "shx rm -f oclif.manifest.json",
+        "posttest": "pnpm run lint",
+        "prepack": "oclif manifest && oclif readme",
+        "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+        "version": "oclif readme && git add README.md"
+    },
+    "types": "dist/index.d.ts"
 }
