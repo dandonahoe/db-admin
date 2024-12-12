@@ -17,46 +17,57 @@ interface ScanConfig {
     srcDir             : string;
     includeTests       : boolean; // New flag to include or exclude test files
 }
-
-const scanJobList: ScanConfig[] = [{
-        outputDescription : 'Midpoint Output 123',
-        fileTypesToScan   : ['.ts', '.tsx', '.sql', '.java', '.xml', '.py', '.sh', '.yml', '.yaml', '.json'],
-        outputFilePath    : path.join(__dirname, './output/midpoint.md'),
-        excludePaths      : [],
-        outputHeader      : '## Midpoint Codebase\n\n',
-        includeTests      : false,
-        outputDir         : path.join(__dirname, './output'),
-        srcDir            : path.join(__dirname, '../../../../midpoint'),
-    }
-    // , {
-    //     outputDescription : 'This document contains all the backend codebase for the Crude Cards game.',
-    //     fileTypesToScan   : ['.ts', '.tsx'],
-    //     outputFilePath    : path.join(__dirname, './output/codebase-crude-cards-backend.md'),
-    //     excludePaths      : [],
-    //     outputHeader      : '## Backend Codebase\n\n',
-    //     includeTests      : false,
-    //     outputDir         : path.join(__dirname, './output'),
-    //     srcDir            : path.join(__dirname, '../../../src/api/src'),
-    // }, {
-    //     outputDescription : 'This document contains the codebase for the Attorney AI project.',
-    //     fileTypesToScan   : ['.ts', '.tsx'],
-    //     outputFilePath    : path.join(__dirname, './output/codebase-attorney-ai.md'),
-    //     excludePaths      : [path.join(__dirname, '../../../src/api')],
-    //     outputHeader      : '## Attorney AI Codebase\n\n',
-    //     includeTests      : false,
-    //     outputDir         : path.join(__dirname, './output'),
-    //     srcDir            : path.join(__dirname, '../../../src'),
-    // }, {
-    //     outputDescription : 'Experimental integration of Genertive AI and neo4js',
-    //     fileTypesToScan   : ['.ts'],
-    //     outputFilePath    : path.join(__dirname, './output/codebase-narrative.md'),
-    //     excludePaths      : [path.join(__dirname, '../narrative')],
-    //     outputHeader      : '## Generative AI and neo4js Experiment\n\n',
-    //     includeTests      : false,
-    //     outputDir         : path.join(__dirname, './output'),
-    //     srcDir            : path.join(__dirname, '../../../src'),
-    // },
+const fileTypesToScan = [
+    '.ts', '.tsx', '.sql', '.java', '.xml',
+    '.py', '.sh',  '.yml', '.yaml', '.json',
+    '.conf', '.bash'
 ];
+
+// const repoDirectories = [
+//     'accounts',
+//     'aws',
+//     'crude-cards',
+//     'dat',
+//     'db-admin',
+//     'developer',
+//     'ed-iam',
+//     'edldap-deploy-env',
+//     'gateway',
+//     'gateway-test-client',
+//     'grouper',
+//     'groups',
+//     'midpoint',
+//     'onboard',
+//     'serviceaccountmanager',
+//     'sql-scripts',
+//     'te-pipe-orchestration',
+// ];
+
+const repoDirectories = [
+    'banner-vtirm',
+    'banner-vtregistry',
+    'confirmpassword-sp',
+    'errorLogCheck',
+    'hokiePassportXchange',
+    'idremoval',
+    'integrityChecks',
+    'middlewarerepl-sp',
+    'registry-vtregistry',
+    'sql-scripts',
+    'unix_removal',
+    'vtfbanner-vtirm',
+];
+
+const scanJobList: ScanConfig[] = repoDirectories.map(repoDir => ({
+    outputDescription : `${repoDir} Output`,
+    fileTypesToScan,
+    outputFilePath    : path.join(__dirname, `./output/${repoDir}.md`),
+    excludePaths      : [],
+    outputHeader      : `## ${repoDir} Codebase\n\n`,
+    includeTests      : false,
+    outputDir         : path.join(__dirname, './output'),
+    srcDir            : path.join(__dirname, `../../../../vt/${repoDir}`),
+}));
 
 // Function to check if a file path should be excluded
 const isExcluded = (filePath: string, excludePaths: string[]): boolean =>
