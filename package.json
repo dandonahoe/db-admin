@@ -10,11 +10,11 @@
     "dev:api": "pnpm --prefix src/api run start",
     "build:api": "IS_BUILDING=true pnpm --prefix src/api build",
     "build:web": "IS_BUILDING=true pnpm --prefix src/web build",
-    "analyze": "pnpm --prefix src/cli job:codebase"
-
+    "analyze": "pnpm --prefix src/cli job:codebase",
+    "vt": "pnpm --prefix src/cli vt"
   },
   "keywords": [],
-  "author": "",
+  "author": "Daniel Donahoe",
   "license": "ISC",
   "dependencies": {
     "commander": "12.1.0"

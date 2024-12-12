@@ -8,65 +8,65 @@ import * as path from 'path';
 dotenv.config();
 
 interface ScanConfig {
-    outputDescription? : string;
-    fileTypesToScan    : string[];
-    outputFilePath     : string;
-    outputHeader?      : string;
-    excludePaths       : string[];
-    outputDir          : string;
-    srcDir             : string;
-    includeTests       : boolean; // New flag to include or exclude test files
+    outputDescription?: string;
+    fileTypesToScan: string[];
+    outputFilePath: string;
+    outputHeader?: string;
+    excludePaths: string[];
+    outputDir: string;
+    srcDir: string;
+    includeTests: boolean; // New flag to include or exclude test files
 }
 const fileTypesToScan = [
-    '.ts', '.tsx', '.sql', '.java', '.xml',
-    '.py', '.sh',  '.yml', '.yaml', '.json',
-    '.conf', '.bash'
+    '.yaml', '.json', '.conf', '.bash',
+    '.ts', '.tsx', '.sql', '.java',
+    '.xml', '.py', '.sh', '.yml',
 ];
 
 // const repoDirectories = [
-//     'accounts',
-//     'aws',
-//     'crude-cards',
-//     'dat',
-//     'db-admin',
-//     'developer',
-//     'ed-iam',
-//     'edldap-deploy-env',
-//     'gateway',
-//     'gateway-test-client',
-//     'grouper',
-//     'groups',
-//     'midpoint',
-//     'onboard',
 //     'serviceaccountmanager',
-//     'sql-scripts',
 //     'te-pipe-orchestration',
+//     'gateway-test-client',
+//     'edldap-deploy-env',
+//     'crude-cards',
+//     'sql-scripts',
+//     'developer',
+//     'accounts',
+//     'db-admin',
+//     'midpoint',
+//     'gateway',
+//     'grouper',
+//     'onboard',
+//     'ed-iam',
+//     'groups',
+//     'aws',
+//     'dat',
 // ];
 
 const repoDirectories = [
-    'banner-vtirm',
-    'banner-vtregistry',
-    'confirmpassword-sp',
-    'errorLogCheck',
     'hokiePassportXchange',
-    'idremoval',
-    'integrityChecks',
-    'middlewarerepl-sp',
     'registry-vtregistry',
-    'sql-scripts',
-    'unix_removal',
+    'confirmpassword-sp',
+    'middlewarerepl-sp',
+    'banner-vtregistry',
     'vtfbanner-vtirm',
+    'integrityChecks',
+    'errorLogCheck',
+    'unix_removal',
+    'banner-vtirm',
+    'sql-scripts',
+    'idremoval',
 ];
 
 const scanJobList: ScanConfig[] = repoDirectories.map(repoDir => ({
-    outputDescription : `${repoDir} Output`,
+    outputDescription: `${repoDir} Output`,
     fileTypesToScan,
-    outputFilePath    : path.join(__dirname, `./output/${repoDir}.md`),
-    excludePaths      : [],
-    outputHeader      : `## ${repoDir} Codebase\n\n`,
-    includeTests      : false,
-    outputDir         : path.join(__dirname, './output'),
-    srcDir            : path.join(__dirname, `../../../../vt/${repoDir}`),
+    outputFilePath: path.join(__dirname, `./output/${repoDir}.md`),
+    excludePaths: [],
+    outputHeader: `## ${repoDir} Codebase\n\n`,
+    includeTests: false,
+    outputDir: path.join(__dirname, './output'),
+    srcDir: path.join(__dirname, `../../../../vt/${repoDir}`),
 }));
 
 // Function to check if a file path should be excluded
@@ -79,7 +79,7 @@ const getAllFilesAndTree = async (
     includeTests: boolean, relativeRoot: string,
 ): Promise<{ files: string[], tree: string }> => {
 
-    const dirents = await fs.readdir(dir, { withFileTypes : true });
+    const dirents = await fs.readdir(dir, { withFileTypes: true });
 
     const files: string[] = [];
     let tree = '';
@@ -101,8 +101,13 @@ const getAllFilesAndTree = async (
             // Automatically exclude __test__, migrations, and .git directories
             if (!includeTests && (
                 dirent.name === '__test__' || (dir.endsWith('src') && dirent.name === 'migrations')) || dirent.name === '.git') continue;
-            const { files: subFiles, tree: subTree } = await getAllFilesAndTree(res, exts, excludePaths, includeTests, relativeRoot);
+            const {
+                files: subFiles,
+                tree: subTree
+            } = await getAllFilesAndTree(res, exts, excludePaths, includeTests, relativeRoot);
+
             files.push(...subFiles);
+
             tree += subTree;
         } else if (exts.some(ext => res.endsWith(ext)) && (includeTests || !res.endsWith('.spec.ts'))) {
             files.push(res);
@@ -125,7 +130,7 @@ const readAndCombineFiles = async (filePaths: string[]): Promise<string> => {
 // Function to ensure output directory exists
 const ensureOutputDir = async (outputDir: string) => {
     try {
-        await fs.mkdir(outputDir, { recursive : true });
+        await fs.mkdir(outputDir, { recursive: true });
     } catch (err) {
         console.error(`Error creating directory: ${outputDir}`, err);
         throw err;
@@ -169,7 +174,7 @@ const main = async (): Promise<void> => {
         results.forEach((result, index) => {
             if (result.status === 'rejected')
                 console.error(`Error during job ${index + 1}:`, result.reason);
-             else
+            else
                 console.log(`Job ${index + 1} completed successfully.`);
         });
     } catch (error) {

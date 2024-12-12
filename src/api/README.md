@@ -1,99 +1,231 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# NestJS API Application
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a NestJS-based API application that provides a robust and scalable server-side architecture.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+The application is built using the NestJS framework, which offers a modular and extensible structure for developing server-side applications. It includes features for building, testing, and deploying a production-ready API.
 
-## Description
+## Repository Structure
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Project setup
-
-```bash
-$ pnpm install
+```console
+.
+└── src
+    └── api
+        ├── nest-cli.json
+        ├── package.json
+        ├── README.md
+        ├── src
+        │   ├── app.controller.spec.ts
+        │   ├── app.controller.ts
+        │   ├── app.module.ts
+        │   ├── app.service.ts
+        │   └── main.ts
+        ├── test
+        │   ├── app.e2e-spec.ts
+        │   └── jest-e2e.json
+        ├── tsconfig.build.json
+        └── tsconfig.json
 ```
 
-## Compile and run the project
+Key Files:
+
+- `src/api/src/main.ts`: Entry point of the application
+- `src/api/nest-cli.json`: NestJS CLI configuration
+- `src/api/package.json`: Project dependencies and scripts
+- `src/api/tsconfig.json`: TypeScript compiler configuration
+- `src/api/.eslintrc.js`: ESLint configuration for code linting
+
+## Usage Instructions
+
+### Installation
+
+Prerequisites:
+
+- Node.js (version 14.x or later)
+- npm (version 6.x or later)
+
+To install the project dependencies, run the following command in the project root directory:
 
 ```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
+npm install
 ```
 
-## Run tests
+### Getting Started
+
+To start the application in development mode, use the following command:
 
 ```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
+npm run start:dev
 ```
 
-## Deployment
+The API will be available at `http://localhost:3000` by default.
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+### Configuration
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+The application uses environment variables for configuration. You can set the following variables:
+
+- `PORT`: The port on which the application will listen (default: 3000)
+
+### Testing
+
+To run the unit tests:
 
 ```bash
-$ pnpm install -g mau
-$ mau deploy
+npm run test
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+To run the end-to-end tests:
 
-## Resources
+```bash
+npm run test:e2e
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+### Linting and Formatting
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+To lint the codebase:
 
-## Support
+```bash
+npm run lint
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+To format the code:
 
-## Stay in touch
+```bash
+npm run format
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Building for Production
 
-## License
+To build the application for production:
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```bash
+npm run build
+```
+
+The compiled output will be in the `dist` directory.
+
+To start the production build:
+
+```bash
+npm run start:prod
+```
+
+### Troubleshooting
+
+#### Common Issues
+
+1. Port already in use
+
+Problem: When starting the application, you encounter an error message indicating that the port is already in use.
+
+Error message:
+
+```
+Error: listen EADDRINUSE: address already in use :::3000
+```
+
+Diagnostic steps:
+
+1. Check if another instance of the application is running.
+2. Verify if any other service is using port 3000.
+
+Solution:
+
+- Stop the conflicting process or change the port by setting the `PORT` environment variable:
+
+```bash
+PORT=3001 npm run start:dev
+```
+
+2. TypeScript compilation errors
+
+Problem: Encountering TypeScript compilation errors during build or start.
+
+Error message:
+
+```
+TS2307: Cannot find module '...' or its corresponding type declarations.
+```
+
+Diagnostic steps:
+
+1. Ensure all dependencies are installed correctly.
+2. Check if TypeScript definitions are missing for any packages.
+
+Solution:
+
+- Reinstall dependencies and TypeScript definitions:
+
+```bash
+rm -rf node_modules
+npm install
+```
+
+#### Debugging
+
+To enable debug mode, use the following command:
+
+```bash
+npm run start:debug
+```
+
+This will start the application in debug mode, allowing you to attach a debugger.
+
+Log files are typically output to the console. To save logs to a file, you can redirect the output:
+
+```bash
+npm run start:dev > app.log 2>&1
+```
+
+#### Performance Optimization
+
+To profile the application's performance:
+
+1. Use Node.js built-in profiler:
+
+```bash
+NODE_OPTIONS="--prof" npm run start:prod
+```
+
+1. Generate a processed log with:
+
+```bash
+node --prof-process isolate-0xnnnnnnnnnnnn-v8.log > processed.txt
+```
+
+Common bottlenecks:
+
+- Database queries: Optimize by adding indexes or refactoring queries.
+- Memory leaks: Use tools like `heapdump` to identify and fix memory issues.
+
+## Data Flow
+
+The request data flow in this NestJS application follows a typical MVC (Model-View-Controller) pattern:
+
+1. Client sends a request to the API endpoint.
+2. The request is received by the NestJS server (main.ts).
+3. NestJS routes the request to the appropriate controller (app.controller.ts).
+4. The controller processes the request and calls the necessary service methods (app.service.ts).
+5. The service performs business logic and data operations.
+6. The result is returned back through the service to the controller.
+7. The controller sends the response back to the client.
+
+```
+Client Request
+     |
+     v
+NestJS Server (main.ts)
+     |
+     v
+Controller (app.controller.ts)
+     |
+     v
+Service (app.service.ts)
+     |
+     v
+Controller (app.controller.ts)
+     |
+     v
+Client Response
+```
+
+Note: This application uses dependency injection for loose coupling between components, allowing for easier testing and maintenance.
