@@ -11,7 +11,14 @@
     "build:api": "IS_BUILDING=true pnpm --prefix src/api build",
     "build:web": "IS_BUILDING=true pnpm --prefix src/web build",
     "analyze": "pnpm --prefix src/cli job:codebase",
-    "vt": "pnpm --prefix src/cli vt"
+    "cli": "ts-node ./src/cli/bin/dev.js",
+    "cli:build": "pnpm --prefix src/cli build",
+    "cli:lint": "pnpm --prefix src/cli lint",
+    "cli:postpack": "pnpm --prefix src/cli postpack",
+    "cli:posttest": "pnpm --prefix src/cli posttest",
+    "cli:prepack": "pnpm --prefix src/cli prepack",
+    "cli:test": "pnpm --prefix src/cli test",
+    "cli:version": "pnpm --prefix src/cli version"
   },
   "keywords": [],
   "author": "Daniel Donahoe",
@@ -24,7 +31,8 @@
     "clear": "0.1.0",
     "commander": "12.1.0",
     "figlet": "1.8.0",
-    "inquirer": "12.2.0"
+    "inquirer": "12.2.0",
+    "ts-node": "10.9.2"
   },
   "devDependencies": {
     "eslint": "~8.57.0"
